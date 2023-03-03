@@ -1,0 +1,12 @@
+--Create a simpe table of 5 unique items and quantities in stock
+
+CREATE TABLE store (id INTEGER PRIMARY KEY, "item" TEXT, in_stock INTEGER);
+
+INSERT INTO store VALUES (1, "shirts", 5);
+INSERT INTO store VALUES (2, "pants", 10);
+INSERT INTO store VALUES (3, "skirts", 12);
+INSERT INTO store VALUES (4, "hats", 8);
+INSERT INTO store VALUES (5, "belts", 3);
+
+--Display each unique item and how many are in stock
+SELECT item, SUM(in_stock) FROM store GROUP BY item;
