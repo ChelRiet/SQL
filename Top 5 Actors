@@ -1,0 +1,37 @@
+/*Here is a sample of 'Top 5 Actors' and a little information on their earnings*/
+
+/*First created a table with 5 actors, how many lead roles they had, and how much they have earned in total so far*/
+CREATE TABLE top_actors (
+  id INTEGER PRIMARY KEY,
+  actor_name TEXT,
+  lead_roles INTEGER,
+  total_earnings INTEGER
+);
+INSERT INTO top_actors (actor_name, lead_roles, total_earnings)
+VALUES
+  ('Dwayne Johnson', 22, 123456789),
+  ('Robert Downey Jr.', 20, 102345678),
+  ('Chris Hemsworth', 14, 76456789),
+  ('Scarlett Johansson', 15, 72456789),
+  ('Tom Cruise', 22, 70845678);
+
+
+/*Then created a second table using the same actors, their most successful movie, and how much it made in the box office*/
+CREATE TABLE successful_movies (
+  actor_name TEXT,
+  movie_title TEXT,
+  box_office_earnings INTEGER
+);
+INSERT INTO successful_movies (actor_name, movie_title, box_office_earnings)
+VALUES
+  ('Dwayne Johnson', 'Jumanji: Welcome to the Jungle', 962100000.00),
+  ('Robert Downey Jr.', 'Avengers: Endgame', 2797800564.00),
+  ('Chris Hemsworth', 'Thor: Ragnarok', 854000000.00),
+  ('Scarlett Johansson', 'Avengers: Endgame', 2797800564.00),
+  ('Tom Cruise', 'Mission: Impossible - Fallout', 791100000.00);
+
+
+/*Used an inner join to show the information together, featuring the actor, total earned, most successful film, and how well that film did in the box office*/
+SELECT top_actors.actor_name, top_actors.total_earnings, successful_movies.movie_title AS best_movie, successful_movies.box_office_earnings
+FROM top_actors
+JOIN successful_movies ON top_actors.actor_name = successful_movies.actor_name;
