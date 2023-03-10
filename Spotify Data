@@ -44,3 +44,12 @@ WHERE popularity IN (SELECT popularity
   FROM BIT_DB.Spotifydata
   ORDER BY popularity DESC
   LIMIT 10);
+
+/*4 Here I use a CTE in order to provide the average popularity of the top 10 artists while labelling them as a "Top Star"*/
+WITH average_popularity_CTE AS (
+    SELECT AVG(popularity) AS average_popularity, artist_name
+    FROM Spotifydata
+    GROUP BY artist_name)
+SELECT artist_name, average_popularity, 'Top Star' AS tag
+FROM average_popularity_CTE
+WHERE average_popularity >= 90; 
